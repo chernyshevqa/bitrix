@@ -17,7 +17,7 @@ class Create_new_course_page_short(Base):
         super().__init__(driver, WebDriverWait(driver, 10))
         self.driver = driver
 
-    test_date = {'date_course_name': 'test course', 'date_short_name_course': 'test',
+    test_date = {'date_course_name': 'test course_1', 'date_short_name_course': 'test',
                  'date_start_course': '05.10.2023', 'date_stop_course': '31.10.2023', 'date_course_version': '1',
                  'date_potok': '1',
                  'date_link_to_course': 'test.ru', 'date_discount_member_akpp': '10', 'date_discount_full_cource': '10',
@@ -44,7 +44,9 @@ class Create_new_course_page_short(Base):
                  'date_text_program_suitable': 'text_program_suitable', 'date_learning_results': 'learning_results',
                  'date_link_viodeofeedback': 'link_viodeofeedback', 'date_conditions_take_part': 'conditions_take_part',
                  'date_description_course_speakers': 'description_course_speakers', 'date_filed_of_FIO': 'filed_of_FIO',
-                 'date_filed_of_feedback': 'filed_of_feedback', 'date_filed_of_cashback': 'filed_of_cashback'}
+                 'date_filed_of_feedback': 'filed_of_feedback', 'date_filed_of_cashback': 'filed_of_cashback',
+                 'date_description_course_programm': 'description_course_programm', 'date_prise_course': '1000',
+                 'date_info_sertification': 'info_sertification', 'date_FAQ_title': 'FAQ_title', 'date_FAQ_text': 'FAQ_text'}
 
     # needed date
     dict_type_of_course = {'ТОП': 'ТОП', 'СТ': 'СТ', 'ПК': 'ПК', 'ДЭ': 'ДЭ', 'ДП': 'ДП', 'БК': 'БК'}
@@ -150,6 +152,14 @@ class Create_new_course_page_short(Base):
     filed_of_FIO = (By.XPATH, "//input[@placeholder='ФИО']")
     filed_of_feedback = (By.XPATH, "//textarea[@placeholder='Отзыв2']")
     filed_of_cashback = (By.XPATH, "//input[@id='kaschback']")
+    lending = (By.XPATH, "//select[@id='generate_lending']")
+    autopay = (By.XPATH, "//select[@id='autopay']")
+    description_course_programm = (By.XPATH, "//input[@id='description_program']")
+    prise_course = (By.XPATH, "//input[@id='price_course']")
+    info_sertification = (By.XPATH, "//textarea[@id='info_sert']")
+    button_add_field_FAQ = By.XPATH, '//button[@onclick="createFieldFaq(document.getElementsByClassName(\'program-container-faq\')[0])"]'
+    FAQ_title = (By.XPATH, "//div[@class='program-item program-item--adv program-item--adv-faq']//input[@placeholder='Заголовок']")
+    FAQ_text = (By.XPATH, "//div[@class='program-item program-item--adv program-item--adv-faq']//textarea[@placeholder='Текст']")
     button_add_course = (By.XPATH, "//button[@id='addCourse']")
 
     # Getters
@@ -298,5 +308,13 @@ class Create_new_course_page_short(Base):
         # self.clear_value_fields(self.filed_of_cashback)
         # self.input(self.filed_of_cashback, self.test_date['date_filed_of_cashback'])
         # time.sleep(3)
+        self.select_option_by_visible_text(self.lending, self.yes_or_not['Да'])
+        self.select_option_by_visible_text(self.autopay, self.yes_or_not['Да'])
+        self.input(self.description_course_programm, self.test_date['date_description_course_programm'])
+        self.input(self.prise_course, self.test_date['date_prise_course'])
+        self.input(self.info_sertification, self.test_date['date_info_sertification'])
+        self.click(self.button_add_field_FAQ)
+        self.input(self.FAQ_title, self.test_date['date_FAQ_title'])
+        self.input(self.FAQ_text, self.test_date['date_FAQ_text'])
         self.click(self.button_add_course), print("нажать на кнопку добавить")
         self.switch_to_alert()
