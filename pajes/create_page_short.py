@@ -119,7 +119,8 @@ class Create_new_course_page_short(Base):
     promotion_description = (By.XPATH, "//textarea[@id='promotion_str']")
     description_course = (By.XPATH, "//textarea[@id='description_course']")
     short_description_course = (By.XPATH, "//textarea[@id='sokr_description_course']")
-    target_course = (By.XPATH, "//input[@id='target_course']")
+    button_target_course = (By.XPATH, '//button[@onclick="createFieldTargetCourse(document.getElementsByClassName(\'program-container-target_course\')[0])"]')
+    target_course = (By.XPATH, "//div[@class='program-item program-item--adv program-item--adv-target_course']//input[@class='main_select' and @placeholder='Заголовок']")
     button_add_field_advantages_of_course = (By.XPATH,
                                              '//button[@onclick="createField(document.getElementsByClassName(\'program-container-benefits_program\')[0])"]')
     title_advantages_of_course = (By.XPATH,
@@ -135,12 +136,15 @@ class Create_new_course_page_short(Base):
                               "//div[@class='program-item program-item--adv program-item--adv-program_suitable']//input[@placeholder='Заголовок']")
     text_program_suitable = (By.XPATH,
                              "//div[@class='program-item program-item--adv program-item--adv-program_suitable']//textarea[@placeholder='Текст']")
-    learning_results = (By.XPATH, "//input[@id='learning_outcomes']")
+    button_add_learning_results = (By.XPATH, "//button[@onclick='renderFieldLearningOutcomes()']")
+    learning_results_title = (By.XPATH, "//div[@id='learning_outcomes']//input[@placeholder='Заголовок']")
+    learning_results_text = (By.XPATH, "//div[@id='learning_outcomes']//textarea[@placeholder='Текст']")
     button_add_field_videofeedback = (By.XPATH,
                                       '//button[@onclick="createFieldVideoReviews(document.getElementsByClassName(\'program-container-video_reviews\')[0])"]')
     link_viodeofeedback = (By.XPATH,
                            "//div[@class='program-item program-item--adv program-item--adv-video_reviews']//input[@placeholder='Ссылка']")
-    conditions_take_part = (By.XPATH, "//input[@id='terms_participation']")
+    button_conditions_take_part = (By.XPATH, '//button[@onclick="createFieldTermsParticipation(document.getElementsByClassName(\'program-container-terms_participation\')[0])"]')
+    conditions_take_part = (By.XPATH, "//div[@class='program-item program-item--adv program-item--adv-terms_participation']//input[@placeholder='Заголовок']")
     description_course_speakers = (By.XPATH, "//textarea[@id='description_course_speakers']")
     button_add_field_feedback = (By.XPATH, "//button[@onclick='renderFieldReview()']")
     filed_of_FIO = (By.XPATH, "//input[@placeholder='ФИО']")
@@ -157,7 +161,7 @@ class Create_new_course_page_short(Base):
 
     # Methods
     def create_new_course(self):
-        time.sleep(5)
+        time.sleep(10)
         self.get_current_url()
         self.iframe()
         time.sleep(10)
@@ -268,7 +272,9 @@ class Create_new_course_page_short(Base):
         self.input(self.promotion, self.test_date['date_promotion'])
         self.input(self.promotion_description, self.test_date['date_promotion_description'])
         self.input(self.short_description_course, self.test_date['date_short_description_course'])
+        time.sleep(1)
         self.input(self.description_course, self.test_date['date_description_course'])
+        self.click(self.button_target_course)
         self.input(self.target_course, self.test_date['date_target_course'])
         self.click(self.button_add_field_advantages_of_course)
         self.input(self.title_advantages_of_course, self.test_date['date_title_advantages_of_course'])
@@ -278,9 +284,12 @@ class Create_new_course_page_short(Base):
         self.click(self.button_add_field_program_suitable)
         self.input(self.title_program_suitable, self.test_date['date_title_program_suitable'])
         self.input(self.text_program_suitable, self.test_date['date_text_program_suitable'])
-        self.input(self.learning_results, self.test_date['date_learning_results'])
+        self.click(self.button_add_learning_results)
+        self.input(self.learning_results_title, self.test_date['date_learning_results'])
+        self.input(self.learning_results_text, self.test_date['date_learning_results'])
         self.click(self.button_add_field_videofeedback)
         self.input(self.link_viodeofeedback,self.test_date['date_link_viodeofeedback'])
+        self.click(self.button_conditions_take_part)
         self.input(self.conditions_take_part, self.test_date['date_conditions_take_part'])
         self.input(self.description_course_speakers, self.test_date['date_description_course_speakers'])
         self.click(self.button_add_field_feedback)
