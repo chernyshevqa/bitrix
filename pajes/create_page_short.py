@@ -18,7 +18,7 @@ class Create_new_course_page_short(Base):
         self.driver = driver
 
     test_date = {'date_course_name': 'test course_1', 'date_short_name_course': 'test',
-                 'date_start_course': '05.10.2023', 'date_stop_course': '31.10.2023', 'date_course_version': '1',
+                 'date_start_course': '05.10.2023', 'date_stop_course': '03.11.2023', 'date_course_version': '1',
                  'date_potok': '1',
                  'date_link_to_course': 'test.ru', 'date_discount_member_akpp': '10', 'date_discount_full_cource': '10',
                  'date_lead_plan': '200',
@@ -46,7 +46,8 @@ class Create_new_course_page_short(Base):
                  'date_description_course_speakers': 'description_course_speakers', 'date_filed_of_FIO': 'filed_of_FIO',
                  'date_filed_of_feedback': 'filed_of_feedback', 'date_filed_of_cashback': 'filed_of_cashback',
                  'date_description_course_programm': 'description_course_programm', 'date_prise_course': '1000',
-                 'date_info_sertification': 'info_sertification', 'date_FAQ_title': 'FAQ_title', 'date_FAQ_text': 'FAQ_text'}
+                 'date_info_sertification': 'info_sertification', 'date_FAQ_title': 'FAQ_title',
+                 'date_FAQ_text': 'FAQ_text'}
 
     # needed date
     dict_type_of_course = {'ТОП': 'ТОП', 'СТ': 'СТ', 'ПК': 'ПК', 'ДЭ': 'ДЭ', 'ДП': 'ДП', 'БК': 'БК'}
@@ -104,7 +105,7 @@ class Create_new_course_page_short(Base):
 
     """Необходимая успеваемость для допуска к итоговой супервизии"""
     itog_supervision = (
-    By.XPATH, "//*[contains(text(), 'Необходимая успеваемость для допуска к итоговой супервизии:')]")
+        By.XPATH, "//*[contains(text(), 'Необходимая успеваемость для допуска к итоговой супервизии:')]")
     attendance_ind_supervision_supervision = (By.XPATH, "//input[@id='attendance_ind_supervision_supervizii']")
     progress_ind_supervision_supervision = (By.XPATH, "//input[@id='progress_ind_supervision_supervizii']")
     attendance_tin_supervision = (By.XPATH, "//input[@id='attendance_tin_supervizii']")
@@ -116,19 +117,23 @@ class Create_new_course_page_short(Base):
     sert_group_supervision = (By.XPATH, "//input[@id='sert_group_supervizii']")
     link_brif = (By.XPATH, "//input[@id='link_brif']")
     link_passport = (By.XPATH, "//input[@id='link_passport']")
+    button_add_oblojka = (By.XPATH, "//input[@id='imageCover']")
+    button_add_illustration = (By.XPATH, "//input[@id='imageIllustration']")
     department = "//select[@id='department']"
     promotion = (By.XPATH, "//input[@id='promotion']")
     promotion_description = (By.XPATH, "//textarea[@id='promotion_str']")
     description_course = (By.XPATH, "//textarea[@id='description_course']")
     short_description_course = (By.XPATH, "//textarea[@id='sokr_description_course']")
-    button_target_course = (By.XPATH, '//button[@onclick="createFieldTargetCourse(document.getElementsByClassName(\'program-container-target_course\')[0])"]')
-    target_course = (By.XPATH, "//div[@class='program-item program-item--adv program-item--adv-target_course']//input[@class='main_select' and @placeholder='Заголовок']")
+    button_target_course = (By.XPATH,
+                            '//button[@onclick="createFieldTargetCourse(document.getElementsByClassName(\'program-container-target_course\')[0])"]')
+    target_course = (By.XPATH,
+                     "//div[@class='program-item program-item--adv program-item--adv-target_course']//input[@class='main_select' and @placeholder='Заголовок']")
     button_add_field_advantages_of_course = (By.XPATH,
                                              '//button[@onclick="createField(document.getElementsByClassName(\'program-container-benefits_program\')[0])"]')
     title_advantages_of_course = (By.XPATH,
                                   "//div[@class='program-item program-item--adv program-item--adv-benefits_program']//input[@class='main_select' and @placeholder='Заголовок']")
     text_advantages_of_course = (By.XPATH,
-                                       "//div[@class='program-item program-item--adv program-item--adv-benefits_program']//textarea[@placeholder='Текст']")
+                                 "//div[@class='program-item program-item--adv program-item--adv-benefits_program']//textarea[@placeholder='Текст']")
     delete_button_advantages_of_course = (By.XPATH,
                                           "//div[@class='program-item program-item--adv program-item--adv-benefits_program']//i[@class='fa fa-trash']")
     link_video_vizitka = (By.XPATH, "//input[@id='link_video_vizit']")
@@ -139,16 +144,21 @@ class Create_new_course_page_short(Base):
     text_program_suitable = (By.XPATH,
                              "//div[@class='program-item program-item--adv program-item--adv-program_suitable']//textarea[@placeholder='Текст']")
     button_add_learning_results = (By.XPATH, "//button[@onclick='renderFieldLearningOutcomes()']")
+    button_add_photo_learning_results = (By.XPATH, "(//span[contains(text(),'Добавить фото')])[1]")
     learning_results_title = (By.XPATH, "//div[@id='learning_outcomes']//input[@placeholder='Заголовок']")
     learning_results_text = (By.XPATH, "//div[@id='learning_outcomes']//textarea[@placeholder='Текст']")
     button_add_field_videofeedback = (By.XPATH,
                                       '//button[@onclick="createFieldVideoReviews(document.getElementsByClassName(\'program-container-video_reviews\')[0])"]')
     link_viodeofeedback = (By.XPATH,
                            "//div[@class='program-item program-item--adv program-item--adv-video_reviews']//input[@placeholder='Ссылка']")
-    button_conditions_take_part = (By.XPATH, '//button[@onclick="createFieldTermsParticipation(document.getElementsByClassName(\'program-container-terms_participation\')[0])"]')
-    conditions_take_part = (By.XPATH, "//div[@class='program-item program-item--adv program-item--adv-terms_participation']//input[@placeholder='Заголовок']")
+    button_conditions_take_part = (By.XPATH,
+                                   '//button[@onclick="createFieldTermsParticipation(document.getElementsByClassName(\'program-container-terms_participation\')[0])"]')
+    conditions_take_part = (By.XPATH,
+                            "//div[@class='program-item program-item--adv program-item--adv-terms_participation']//input[@placeholder='Заголовок']")
     description_course_speakers = (By.XPATH, "//textarea[@id='description_course_speakers']")
     button_add_field_feedback = (By.XPATH, "//button[@onclick='renderFieldReview()']")
+    button_add_photo_feedback = (
+    By.XPATH, "//div[@class='review-container']//span[contains(text(),'Добавить фото')][1]")
     filed_of_FIO = (By.XPATH, "//input[@placeholder='ФИО']")
     filed_of_feedback = (By.XPATH, "//textarea[@placeholder='Отзыв2']")
     filed_of_cashback = (By.XPATH, "//input[@id='kaschback']")
@@ -158,8 +168,10 @@ class Create_new_course_page_short(Base):
     prise_course = (By.XPATH, "//input[@id='price_course']")
     info_sertification = (By.XPATH, "//textarea[@id='info_sert']")
     button_add_field_FAQ = By.XPATH, '//button[@onclick="createFieldFaq(document.getElementsByClassName(\'program-container-faq\')[0])"]'
-    FAQ_title = (By.XPATH, "//div[@class='program-item program-item--adv program-item--adv-faq']//input[@placeholder='Заголовок']")
-    FAQ_text = (By.XPATH, "//div[@class='program-item program-item--adv program-item--adv-faq']//textarea[@placeholder='Текст']")
+    FAQ_title = (
+    By.XPATH, "//div[@class='program-item program-item--adv program-item--adv-faq']//input[@placeholder='Заголовок']")
+    FAQ_text = (
+    By.XPATH, "//div[@class='program-item program-item--adv program-item--adv-faq']//textarea[@placeholder='Текст']")
     button_add_course = (By.XPATH, "//button[@id='addCourse']")
 
     # Getters
@@ -167,7 +179,6 @@ class Create_new_course_page_short(Base):
     def iframe(self):
         return WebDriverWait(self.driver, 30).until(
             EC.frame_to_be_available_and_switch_to_it((By.XPATH, "//iframe[@class='app-frame']")))
-
 
     # Methods
     def create_new_course(self):
@@ -257,9 +268,11 @@ class Create_new_course_page_short(Base):
         self.clear_value_fields(self.seminar_attendance_supervision)
         self.input(self.seminar_attendance_supervision, self.test_date['date_seminar_attendance_supervision'])
         self.clear_value_fields(self.attendance_ind_supervision_supervision)
-        self.input(self.attendance_ind_supervision_supervision, self.test_date['date_attendance_ind_supervision_supervision'])
+        self.input(self.attendance_ind_supervision_supervision,
+                   self.test_date['date_attendance_ind_supervision_supervision'])
         self.clear_value_fields(self.progress_ind_supervision_supervision)
-        self.input(self.progress_ind_supervision_supervision, self.test_date['date_progress_ind_supervision_supervision'])
+        self.input(self.progress_ind_supervision_supervision,
+                   self.test_date['date_progress_ind_supervision_supervision'])
         self.clear_value_fields(self.attendance_tin_supervision)
         self.input(self.attendance_tin_supervision, self.test_date['date_attendance_tin_supervision'])
         self.clear_value_fields(self.attendance_int_supervision)
@@ -274,7 +287,7 @@ class Create_new_course_page_short(Base):
         self.input(self.sert_group_supervision, self.test_date['date_sert_group_supervision'])
         self.input(self.link_brif, self.test_date['date_link_brif'])
         self.input(self.link_passport, self.test_date['date_link_passport'])
-        #
+        # self.input(self.button_add_oblojka, "D:\\testing\\Becbt-online\\Тестданные")
         select_element_department = (By.XPATH, self.department)
         self.select_option_by_visible_text(select_element_department, self.dict_department['НТ'])
         #
@@ -295,14 +308,16 @@ class Create_new_course_page_short(Base):
         self.input(self.title_program_suitable, self.test_date['date_title_program_suitable'])
         self.input(self.text_program_suitable, self.test_date['date_text_program_suitable'])
         self.click(self.button_add_learning_results)
+        # self.input(self.button_add_photo_learning_results, "D:\\testing\\Becbt-online\\Тестданные")
         self.input(self.learning_results_title, self.test_date['date_learning_results'])
         self.input(self.learning_results_text, self.test_date['date_learning_results'])
         self.click(self.button_add_field_videofeedback)
-        self.input(self.link_viodeofeedback,self.test_date['date_link_viodeofeedback'])
+        self.input(self.link_viodeofeedback, self.test_date['date_link_viodeofeedback'])
         self.click(self.button_conditions_take_part)
         self.input(self.conditions_take_part, self.test_date['date_conditions_take_part'])
         self.input(self.description_course_speakers, self.test_date['date_description_course_speakers'])
         self.click(self.button_add_field_feedback)
+        # self.input(self.button_add_photo_feedback, "D:\\testing\\Becbt-online\\Тестданные")
         self.input(self.filed_of_FIO, self.test_date['date_filed_of_FIO'])
         self.input(self.filed_of_feedback, self.test_date['date_filed_of_feedback'])
         # self.clear_value_fields(self.filed_of_cashback)
@@ -312,7 +327,7 @@ class Create_new_course_page_short(Base):
         self.select_option_by_visible_text(self.autopay, self.yes_or_not['Да'])
         self.input(self.description_course_programm, self.test_date['date_description_course_programm'])
         self.input(self.prise_course, self.test_date['date_prise_course'])
-        self.input(self.info_sertification, self.test_date['date_info_sertification'])
+        # self.input(self.info_sertification, self.test_date['date_info_sertification'])
         self.click(self.button_add_field_FAQ)
         self.input(self.FAQ_title, self.test_date['date_FAQ_title'])
         self.input(self.FAQ_text, self.test_date['date_FAQ_text'])
