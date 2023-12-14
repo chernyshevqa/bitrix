@@ -35,11 +35,6 @@ class Add_practise(Base):
     button_add_speaker = (By.XPATH, "//button[@id='addSpiker']")
 
 
-
-    # def iframe(self):
-    #     return WebDriverWait(self.driver, 30).until(
-    #         EC.frame_to_be_available_and_switch_to_it((By.XPATH, "//iframe[@class='app-frame']")))
-
     def practise_add(self):
         with allure.step("создание практики"):
             self.click(self.add_practice)
