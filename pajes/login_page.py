@@ -61,7 +61,7 @@ class Login_page(Base):
         with allure.step("autorisation"):
             self.driver.get(self.url)
             self.driver.maximize_window()
-            self.input_user_name("79052547785")
+            self.input_user_name("*")
             time.sleep(1)
             self.click_enter()
             self.input_password("*")
