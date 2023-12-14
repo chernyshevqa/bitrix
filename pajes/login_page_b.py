@@ -10,7 +10,7 @@ from base.base_class import Base
 
 class Login_page(Base):
     url = 'http://users.bugred.ru/'
-    url_course = 'https://becbt.online/events/756/gallery'
+    url_course = '*'
     def __init__(self, driver):
         super().__init__(driver, WebDriverWait(driver, 10))
         self.driver = driver
