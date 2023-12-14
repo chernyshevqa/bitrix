@@ -32,7 +32,7 @@ test_date = {'date_course_name': 'testoviy', 'date_short_name_course': 'test',
              'date_FAQ_text': 'FAQ_text'}
 
 dict_type_of_course = {'ТОП': 'ТОП', 'СТ': 'СТ', 'ПК': 'ПК', 'ДЭ': 'ДЭ', 'ДП': 'ДП', 'БК': 'БК'}
-link_to_course = "https://becbt.online/dashboard"
+link_to_course = "*"
 difficulty = ["Начальный", "Продвинутый", "Экспертный"]
 yes_or_not = {'Да': 'Да', 'Нет': 'Нет'}
 dict_seller = {'АКППcbt': 'АКППcbt', 'АКППcbtunivercity': 'АКППcbtunivercity', 'АКПП cbttour': 'АКПП cbttour'
