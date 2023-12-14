@@ -42,6 +42,6 @@ class Create_deal(Base):
         self.input(self.name, "name")
         self.input(self.user_1, "*")
         self.click(self.add_goods)
-        self.input(self.goods_name, "123")
+        self.input(self.goods_name, "items")
 
         time.sleep(4)
