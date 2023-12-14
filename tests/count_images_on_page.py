@@ -6,8 +6,8 @@ from selenium.webdriver.common.by import By
 from selenium import webdriver
 import os
 
-base_url = "https://becbt.online/events/616/gallery"  # замените на ваш реальный URL
-base_url_1 = "https://becbt.online/login"
+base_url = "*"  # замените на ваш реальный URL
+base_url_1 = "*"
 
 driver = webdriver.Chrome() 
 
@@ -21,9 +21,9 @@ missing_images = []
 driver.get(base_url_1)
 driver.maximize_window()
 user_name = driver.find_element(By.XPATH, '//*[@name="email"]')
-user_name.send_keys("admin@from.hell")
+user_name.send_keys("*")
 password = driver.find_element(By.ID, "password-field")
-password.send_keys("QgqgKq2jMgpK")
+password.send_keys("*")
 button = driver.find_element(By.ID, "submit")
 button.click()
 driver.get(base_url)
