@@ -9,7 +9,7 @@ from pajes.add_practice_seminar_page import Add_practise
 
 
 
-
+"""Тест добавление практик"""
 def test_add_practices():
 
     options = webdriver.ChromeOptions()
