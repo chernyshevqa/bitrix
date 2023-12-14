@@ -1,0 +1,12 @@
+Start Test 1
+input user name
+click enter
+input password
+click login button
+click user
+input password
+click login button
+Corrent url https://becbt.bitrix24.ru/marketplace/app/64/?current_fieldset=SOCSERV
+нажать на кнопку добавить
+Практика seminar 1 добавлена
+finish test 1
