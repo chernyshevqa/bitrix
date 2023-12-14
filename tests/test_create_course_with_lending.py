@@ -6,7 +6,7 @@ from pajes.page_course_assert import assert_page
 from pajes.delete_course_page import Delete_course
 from pajes.add_practice_seminar_page import Add_practise
 
-
+"""Создание лендинга курса"""
 def test_create_new_course():
 
     options = webdriver.ChromeOptions()

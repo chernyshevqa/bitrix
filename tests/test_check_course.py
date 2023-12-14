@@ -9,7 +9,7 @@ from pajes.page_course_assert import assert_page
 
 
 
-
+"""Проверка курса"""
 def test_check_new_course():
 
     options = webdriver.ChromeOptions()

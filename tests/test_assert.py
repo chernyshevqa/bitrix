@@ -4,7 +4,7 @@ from pajes.login_page import Login_page
 from pajes.page_course_assert import assert_page
 from pajes.search_course_page import Search_course
 
-
+"""Проверка добавление практики"""
 def test_add_practices():
     options = webdriver.ChromeOptions()
     options.add_argument('--ignore-certificate-errors')

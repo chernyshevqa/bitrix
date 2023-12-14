@@ -11,7 +11,7 @@ from pajes.create_deal import Create_deal
 
 
 
-
+"""Тест по проверки курса"""
 def test_check_new_course():
 
     options = webdriver.ChromeOptions()
