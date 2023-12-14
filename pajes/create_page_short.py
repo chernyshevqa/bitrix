@@ -1,12 +1,11 @@
 import time
-from selenium.webdriver.support.ui import Select
-from selenium.webdriver import ActionChains
+
+import allure
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-from selenium.webdriver import Keys
 from base.base_class import Base
-
+from test_data.data_test import *
 """Главная страница сайта"""
 
 
@@ -16,49 +15,6 @@ class Create_new_course_page_short(Base):
     def __init__(self, driver):
         super().__init__(driver, WebDriverWait(driver, 10))
         self.driver = driver
-
-    test_date = {'date_course_name': 'test course_1', 'date_short_name_course': 'test',
-                 'date_start_course': '05.10.2023', 'date_stop_course': '03.11.2023', 'date_course_version': '1',
-                 'date_potok': '1',
-                 'date_link_to_course': 'test.ru', 'date_discount_member_akpp': '10', 'date_discount_full_cource': '10',
-                 'date_lead_plan': '200',
-                 'date_start_RK': '11.10.2023', 'date_min_count_people': '10', 'date_activity_end_date': '31.10.2023',
-                 'date_academic_hours': '200', 'date_all_tin': '10', 'date_all_intervision': '10',
-                 'date_seminar_attendance': '80', 'date_attendance_ind_supervision': '100',
-                 'date_progress_ind_supervision': '100', 'date_attendance_tin': '100', 'date_attendance_int': '100',
-                 'date_group_supervision': '100',
-                 'date_final_testing_seminar': '100', 'date_seminar_attendance_supervision': '100',
-                 'date_attendance_ind_supervision_supervision': '100',
-                 'date_progress_ind_supervision_supervision': '100', 'date_attendance_tin_supervision': '100',
-                 'date_attendance_int_supervision': '100', 'date_group_supervision_supervision': '100',
-                 'date_final_testing_seminar_supervision': '100', 'date_sert_group_supervision': '100',
-                 'date_link_brif': 'test link', 'date_link_passport': 'test link pasport',
-                 'date_promotion': '10',
-                 'date_promotion_description': 'promotion_description',
-                 'date_short_description_course': 'short_description_course',
-                 'date_description_course': 'description_course', 'date_target_course': 'target_course',
-                 'date_title_advantages_of_course': 'title_advantages_of_course',
-                 'date_text_advantages_of_course': 'text_advantages_of_course',
-                 'date_link_video_vizitka': 'link_video_vizitka',
-                 'date_title_program_suitable': 'title_program_suitable',
-                 'date_text_program_suitable': 'text_program_suitable', 'date_learning_results': 'learning_results',
-                 'date_link_viodeofeedback': 'link_viodeofeedback', 'date_conditions_take_part': 'conditions_take_part',
-                 'date_description_course_speakers': 'description_course_speakers', 'date_filed_of_FIO': 'filed_of_FIO',
-                 'date_filed_of_feedback': 'filed_of_feedback', 'date_filed_of_cashback': 'filed_of_cashback',
-                 'date_description_course_programm': 'description_course_programm', 'date_prise_course': '1000',
-                 'date_info_sertification': 'info_sertification', 'date_FAQ_title': 'FAQ_title',
-                 'date_FAQ_text': 'FAQ_text'}
-
-    # needed date
-    dict_type_of_course = {'ТОП': 'ТОП', 'СТ': 'СТ', 'ПК': 'ПК', 'ДЭ': 'ДЭ', 'ДП': 'ДП', 'БК': 'БК'}
-    name_of_course = "test course"
-    link_to_course = "https://becbt.online/dashboard"
-    difficulty = ["Начальный", "Продвинутый", "Экспертный"]
-    yes_or_not = {'Да': 'Да', 'Нет': 'Нет'}
-    dict_seller = {'АКППcbt': 'АКППcbt', 'АКППcbtunivercity': 'АКППcbtunivercity', 'АКПП cbttour': 'АКПП cbttour'
-        , 'АКПП becbt': 'АКПП becbt', 'МИР КПТ': 'МИР КПТ'}
-    dict_who_issues_certificates = {'Мир КПТ': 'Мир КПТ', 'АКПП': 'АКПП', 'Мир КПТ и АКПП': 'Мир КПТ и АКПП'}
-    dict_department = {'ОКП': 'ОКП', 'НТ': 'НТ', 'НОМП': 'НОМП', 'КПК': 'КПК', }
 
     # Locators
     performance_for_sertificat = (By.XPATH, "//*[contains(text(), 'Необходимая успеваемость для сертификата:')]")
@@ -85,6 +41,7 @@ class Create_new_course_page_short(Base):
     activity_end_date = (By.XPATH, "//input[@id='activity_end_date']")
     sdo = (By.XPATH, "//input[@id='sdo']")
     academic_hours = (By.XPATH, "//input[@id='academichours']")
+    # add_pictires = (By.XPATH, "(//span[contains(text(),'Выбрать обложку')])[1]")
     who_issues_certificates = "//select[@id='who_issues_certificates']"
     all_seminars = "//select[@id='all_seminars']"
     all_tin = (By.XPATH, "//input[@id='all_tin']")
@@ -104,6 +61,7 @@ class Create_new_course_page_short(Base):
     seminar_attendance_supervision = (By.XPATH, "//input[@id='seminar_attendance_supervizii']")
 
     """Необходимая успеваемость для допуска к итоговой супервизии"""
+    button_open_sertification = (By.XPATH, "//*[contains(text(), 'Сертификация и успеваемость:')]")
     itog_supervision = (
         By.XPATH, "//*[contains(text(), 'Необходимая успеваемость для допуска к итоговой супервизии:')]")
     attendance_ind_supervision_supervision = (By.XPATH, "//input[@id='attendance_ind_supervision_supervizii']")
@@ -114,6 +72,8 @@ class Create_new_course_page_short(Base):
     final_testing_seminar_supervision = (By.XPATH, "//input[@id='final_testing_seminar_supervizii']")
 
     """Доп информация для формирования страниц"""
+    button_extra_information_for_pagers = (
+        By.XPATH, "(//div[contains(text(),'Доп информация для формирования страниц:')])[1]")
     sert_group_supervision = (By.XPATH, "//input[@id='sert_group_supervizii']")
     link_brif = (By.XPATH, "//input[@id='link_brif']")
     link_passport = (By.XPATH, "//input[@id='link_passport']")
@@ -157,8 +117,7 @@ class Create_new_course_page_short(Base):
                             "//div[@class='program-item program-item--adv program-item--adv-terms_participation']//input[@placeholder='Заголовок']")
     description_course_speakers = (By.XPATH, "//textarea[@id='description_course_speakers']")
     button_add_field_feedback = (By.XPATH, "//button[@onclick='renderFieldReview()']")
-    button_add_photo_feedback = (
-    By.XPATH, "//div[@class='review-container']//span[contains(text(),'Добавить фото')][1]")
+    button_add_photo_feedback = (By.XPATH, "//div[@class='review-container']//span[contains(text(),'Добавить фото')][1]")
     filed_of_FIO = (By.XPATH, "//input[@placeholder='ФИО']")
     filed_of_feedback = (By.XPATH, "//textarea[@placeholder='Отзыв2']")
     filed_of_cashback = (By.XPATH, "//input[@id='kaschback']")
@@ -173,7 +132,10 @@ class Create_new_course_page_short(Base):
     FAQ_text = (
     By.XPATH, "//div[@class='program-item program-item--adv program-item--adv-faq']//textarea[@placeholder='Текст']")
     button_add_course = (By.XPATH, "//button[@id='addCourse']")
-
+    errors = (By.XPATH, "//p[@class='mess_error_course']")
+    photo_path_jpg = r'D:\testing\Becbt-online\Тестданные\1.jpg'
+    error_photo_path = r'D:\testing\Becbt-online\Тестданные\кар123.png'
+    photo_path_png = r'D:\testing\Becbt-online\Тестданные\Testovich Test.png'
     # Getters
 
     def iframe(self):
@@ -182,154 +144,107 @@ class Create_new_course_page_short(Base):
 
     # Methods
     def create_new_course(self):
-        time.sleep(10)
+        time.sleep(7)
         self.get_current_url()
         self.iframe()
-        time.sleep(10)
-        self.click(self.add_courses)
-        self.input(self.course_name, self.test_date['date_course_name'])
+        time.sleep(5)
+        """необходимая инфа для создания курса"""
+        self.input(self.course_name, test_date['date_course_name'])
         self.click(self.cancel_sending_email)
-        self.input(self.short_name_course, self.test_date['date_short_name_course'])
-        self.input(self.date_start_course, self.test_date['date_start_course'])
-        self.input(self.date_stop_course, self.test_date['date_stop_course'])
-        self.input(self.course_version, self.test_date['date_course_version'])
-        self.input(self.potok, self.test_date['date_potok'])
+        self.input(self.short_name_course,test_date['date_short_name_course'])
+        self.input(self.date_stop_course,test_date['date_stop_course'])
+        self.input(self.course_version, test_date['date_course_version'])
+        self.input(self.potok, test_date['date_potok'])
 
         select_element_type_of_course = (By.XPATH, self.select_type_course)
-        self.select_option_by_visible_text(select_element_type_of_course, self.dict_type_of_course['БК'])
+        self.select_option_by_visible_text(select_element_type_of_course, dict_type_of_course['БК'])
 
         select_element_difficulty_of_course = (By.XPATH, self.select_difficulty_of_course)
-        self.select_option_by_visible_text(select_element_difficulty_of_course, self.difficulty[2])
+        self.select_option_by_visible_text(select_element_difficulty_of_course, difficulty[2])
 
-        self.input(self.filed_link_to_course, self.test_date['date_link_to_course'])
+        self.input(self.filed_link_to_course, test_date['date_link_to_course'])
 
         select_element_regionalCourse = (By.XPATH, self.select_regionalCourse)
-        self.select_option_by_visible_text(select_element_regionalCourse, self.yes_or_not['Да'])
+        self.select_option_by_visible_text(select_element_regionalCourse, yes_or_not['Да'])
 
         select_element_seller = (By.XPATH, self.seller)
-        self.select_option_by_visible_text(select_element_seller, self.dict_seller['АКППcbt'])
+        self.select_option_by_visible_text(select_element_seller, dict_seller['АКППcbt'])
 
         select_element_auto_send_document = (By.XPATH, self.auto_send_document)
-        self.select_option_by_visible_text(select_element_auto_send_document, self.yes_or_not['Да'])
+        self.select_option_by_visible_text(select_element_auto_send_document, yes_or_not['Да'])
 
         self.clear_value_fields(self.discount_member_akpp)
-        self.input(self.discount_member_akpp, self.test_date['date_discount_member_akpp'])
+        self.input(self.discount_member_akpp, test_date['date_discount_member_akpp'])
         self.clear_value_fields(self.discount_full_cource)
-        self.input(self.discount_full_cource, self.test_date['date_discount_full_cource'])
+        self.input(self.discount_full_cource, test_date['date_discount_full_cource'])
 
-        self.input(self.lead_plan, self.test_date['date_lead_plan'])
-        self.input(self.date_start_RK, self.test_date['date_start_RK'])
-        self.input(self.min_count_people, self.test_date['date_min_count_people'])
-        self.input(self.activity_end_date, self.test_date['date_activity_end_date'])
-        self.input(self.academic_hours, self.test_date['date_academic_hours'])
+        self.input(self.lead_plan, test_date['date_lead_plan'])
+        self.input(self.date_start_RK, test_date['date_start_RK'])
+        self.input(self.min_count_people, test_date['date_min_count_people'])
+        self.input(self.activity_end_date, test_date['date_activity_end_date'])
+        self.input(self.academic_hours, test_date['date_academic_hours'])
+        select_element_department = (By.XPATH, self.department)
+        self.select_option_by_visible_text(select_element_department, dict_department['НТ'])
+        self.input(self.link_brif, test_date['date_link_brif'])
+        self.input(self.link_passport, test_date['date_link_passport'])
+        self.add_photo_to_website(self.button_add_oblojka, self.photo_path_png)
+        self.click(self.button_open_sertification)
 
+        """раздел Сертификаты"""
         select_element_who_issues_certificates = (By.XPATH, self.who_issues_certificates)
-        self.select_option_by_visible_text(select_element_who_issues_certificates,
-                                           self.dict_who_issues_certificates['АКПП'])
-
+        self.select_option_by_visible_text(select_element_who_issues_certificates, dict_who_issues_certificates['АКПП'])
         select_element_all_seminars = (By.XPATH, self.all_seminars)
-        self.select_option_by_visible_text(select_element_all_seminars, self.yes_or_not['Да'])
-
-        self.input(self.all_tin, self.test_date['date_all_tin'])
-        self.input(self.all_intervision, self.test_date['date_all_intervision'])
-
+        self.select_option_by_visible_text(select_element_all_seminars, yes_or_not['Да'])
+        self.input(self.all_tin, test_date['date_all_tin'])
+        self.input(self.all_intervision, test_date['date_all_intervision'])
         select_element_sert_course = (By.XPATH, self.sert_course)
-        self.select_option_by_visible_text(select_element_sert_course, self.yes_or_not['Да'])
-
+        self.select_option_by_visible_text(select_element_sert_course, yes_or_not['Да'])
         select_element_diplom_profy = (By.XPATH, self.diplom_profy)
-        self.select_option_by_visible_text(select_element_diplom_profy, self.yes_or_not['Да'])
-
+        self.select_option_by_visible_text(select_element_diplom_profy, yes_or_not['Да'])
         select_element_udostoverenie_kurs = (By.XPATH, self.udostoverenie_kurs)
-        self.select_option_by_visible_text(select_element_udostoverenie_kurs, self.yes_or_not['Да'])
-
+        self.select_option_by_visible_text(select_element_udostoverenie_kurs, yes_or_not['Да'])
         select_element_sert_all_seminar = (By.XPATH, self.sert_all_seminar)
-        self.select_option_by_visible_text(select_element_sert_all_seminar, self.yes_or_not['Да'])
-
+        self.select_option_by_visible_text(select_element_sert_all_seminar, yes_or_not['Да'])
         select_element_sert_otd_seminar = (By.XPATH, self.sert_otd_seminar)
-        self.select_option_by_visible_text(select_element_sert_otd_seminar, self.yes_or_not['Да'])
+        self.select_option_by_visible_text(select_element_sert_otd_seminar, yes_or_not['Да'])
 
+        """Посещаемость столбец 1"""
         self.clear_value_fields(self.seminar_attendance)
-        self.input(self.seminar_attendance, self.test_date['date_seminar_attendance'])
+        self.input(self.seminar_attendance, test_date['date_seminar_attendance'])
         self.clear_value_fields(self.attendance_ind_supervision)
-        self.input(self.attendance_ind_supervision, self.test_date['date_attendance_ind_supervision'])
+        self.input(self.attendance_ind_supervision, test_date['date_attendance_ind_supervision'])
         self.clear_value_fields(self.progress_ind_supervision)
-        self.input(self.progress_ind_supervision, self.test_date['date_progress_ind_supervision'])
+        self.input(self.progress_ind_supervision, test_date['date_progress_ind_supervision'])
         self.clear_value_fields(self.attendance_tin)
-        self.input(self.attendance_tin, self.test_date['date_attendance_tin'])
+        self.input(self.attendance_tin, test_date['date_attendance_tin'])
         self.clear_value_fields(self.attendance_int)
-        self.input(self.attendance_int, self.test_date['date_attendance_int'])
+        self.input(self.attendance_int, test_date['date_attendance_int'])
         self.clear_value_fields(self.group_supervision)
-        self.input(self.group_supervision, self.test_date['date_group_supervision'])
+        self.input(self.group_supervision, test_date['date_group_supervision'])
         self.clear_value_fields(self.final_testing_seminar)
-        self.input(self.final_testing_seminar, self.test_date['date_final_testing_seminar'])
-        self.click(self.performance_for_sertificat)
-        self.click(self.itog_supervision)
+        self.input(self.final_testing_seminar, test_date['date_final_testing_seminar'])
 
+        """Посещаемость столбец 2"""
         self.clear_value_fields(self.seminar_attendance_supervision)
-        self.input(self.seminar_attendance_supervision, self.test_date['date_seminar_attendance_supervision'])
+        self.input(self.seminar_attendance_supervision, test_date['date_seminar_attendance_supervision'])
         self.clear_value_fields(self.attendance_ind_supervision_supervision)
         self.input(self.attendance_ind_supervision_supervision,
-                   self.test_date['date_attendance_ind_supervision_supervision'])
+                       test_date['date_attendance_ind_supervision_supervision'])
         self.clear_value_fields(self.progress_ind_supervision_supervision)
         self.input(self.progress_ind_supervision_supervision,
-                   self.test_date['date_progress_ind_supervision_supervision'])
+                       test_date['date_progress_ind_supervision_supervision'])
         self.clear_value_fields(self.attendance_tin_supervision)
-        self.input(self.attendance_tin_supervision, self.test_date['date_attendance_tin_supervision'])
+        self.input(self.attendance_tin_supervision, test_date['date_attendance_tin_supervision'])
         self.clear_value_fields(self.attendance_int_supervision)
-        self.input(self.attendance_int_supervision, self.test_date['date_attendance_int_supervision'])
+        self.input(self.attendance_int_supervision, test_date['date_attendance_int_supervision'])
         self.clear_value_fields(self.group_supervision_supervision)
-        self.input(self.group_supervision_supervision, self.test_date['date_group_supervision_supervision'])
+        self.input(self.group_supervision_supervision, test_date['date_group_supervision_supervision'])
         self.clear_value_fields(self.final_testing_seminar_supervision)
-        self.input(self.final_testing_seminar_supervision, self.test_date['date_final_testing_seminar_supervision'])
-        time.sleep(2)
-        self.click(self.itog_supervision)
+        self.input(self.final_testing_seminar_supervision, test_date['date_final_testing_seminar_supervision'])
         self.clear_value_fields(self.sert_group_supervision)
-        self.input(self.sert_group_supervision, self.test_date['date_sert_group_supervision'])
-        self.input(self.link_brif, self.test_date['date_link_brif'])
-        self.input(self.link_passport, self.test_date['date_link_passport'])
-        # self.input(self.button_add_oblojka, "D:\\testing\\Becbt-online\\Тестданные")
-        select_element_department = (By.XPATH, self.department)
-        self.select_option_by_visible_text(select_element_department, self.dict_department['НТ'])
-        #
-        self.clear_value_fields(self.promotion)
-        self.input(self.promotion, self.test_date['date_promotion'])
-        self.input(self.promotion_description, self.test_date['date_promotion_description'])
-        self.input(self.short_description_course, self.test_date['date_short_description_course'])
-        time.sleep(1)
-        self.input(self.description_course, self.test_date['date_description_course'])
-        self.click(self.button_target_course)
-        self.input(self.target_course, self.test_date['date_target_course'])
-        self.click(self.button_add_field_advantages_of_course)
-        self.input(self.title_advantages_of_course, self.test_date['date_title_advantages_of_course'])
-        self.input(self.text_advantages_of_course, self.test_date['date_text_advantages_of_course'])
-        # self.click_delete_button_advantages_of_course()
-        self.input(self.link_video_vizitka, self.test_date['date_link_video_vizitka'])
-        self.click(self.button_add_field_program_suitable)
-        self.input(self.title_program_suitable, self.test_date['date_title_program_suitable'])
-        self.input(self.text_program_suitable, self.test_date['date_text_program_suitable'])
-        self.click(self.button_add_learning_results)
-        # self.input(self.button_add_photo_learning_results, "D:\\testing\\Becbt-online\\Тестданные")
-        self.input(self.learning_results_title, self.test_date['date_learning_results'])
-        self.input(self.learning_results_text, self.test_date['date_learning_results'])
-        self.click(self.button_add_field_videofeedback)
-        self.input(self.link_viodeofeedback, self.test_date['date_link_viodeofeedback'])
-        self.click(self.button_conditions_take_part)
-        self.input(self.conditions_take_part, self.test_date['date_conditions_take_part'])
-        self.input(self.description_course_speakers, self.test_date['date_description_course_speakers'])
-        self.click(self.button_add_field_feedback)
-        # self.input(self.button_add_photo_feedback, "D:\\testing\\Becbt-online\\Тестданные")
-        self.input(self.filed_of_FIO, self.test_date['date_filed_of_FIO'])
-        self.input(self.filed_of_feedback, self.test_date['date_filed_of_feedback'])
-        # self.clear_value_fields(self.filed_of_cashback)
-        # self.input(self.filed_of_cashback, self.test_date['date_filed_of_cashback'])
-        # time.sleep(3)
-        self.select_option_by_visible_text(self.lending, self.yes_or_not['Да'])
-        self.select_option_by_visible_text(self.autopay, self.yes_or_not['Да'])
-        self.input(self.description_course_programm, self.test_date['date_description_course_programm'])
-        self.input(self.prise_course, self.test_date['date_prise_course'])
-        # self.input(self.info_sertification, self.test_date['date_info_sertification'])
-        self.click(self.button_add_field_FAQ)
-        self.input(self.FAQ_title, self.test_date['date_FAQ_title'])
-        self.input(self.FAQ_text, self.test_date['date_FAQ_text'])
+        self.input(self.sert_group_supervision, test_date['date_sert_group_supervision'])
+            # self.input(self.button_add_oblojka, "D:\\testing\\Becbt-online\\Тестданные")
         self.click(self.button_add_course), print("нажать на кнопку добавить")
-        self.switch_to_alert()
+            # self.get_error_value(self.errors)
+        time.sleep(5)
+            # self.switch_to_alert()
