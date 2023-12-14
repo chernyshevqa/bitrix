@@ -19,7 +19,7 @@ class Login_page(Base):
     user_name = "//input[@id='login']"
     password = "//input[@id='password']"
     button_next = "//button[@class='ui-btn ui-btn-md ui-btn-success ui-btn-round b24-network-auth-form-btn']"
-    user = "//div[@data-user-id='48671388']"
+    user = "//div[@data-user-id='*']"
 
     # Getters
     def get_user_name(self):
