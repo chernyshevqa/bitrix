@@ -5,7 +5,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
 from base.base_class import Base
 from test_data.data_test import *
-"""Главная страница сайта"""
+
 
 
 class Add_practise(Base):
